@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moveable Button Game</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    position: relative; /* Make body relative for absolute positioning */
+  }
+
+  button {
+    position: absolute;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+  }
+
+  .credit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<button id="move-button">Close Game</button>
+<div class="credit">Made by Derek IG</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const moveButton = document.getElementById('move-button');
+    
+    moveButton.addEventListener('click', function() {
+      moveButtonRandom();
+    });
+    
+    function moveButtonRandom() {
+      // Generate random position within the viewport
+      const newX = Math.random() * (window.innerWidth - moveButton.offsetWidth);
+      const newY = Math.random() * (window.innerHeight - moveButton.offsetHeight);
+      
+      // Move the button to the new position
+      moveButton.style.left = `${newX}px`;
+      moveButton.style.top = `${newY}px`;
+      
+      // Change background color to black
+      document.body.style.backgroundColor = '#000';
+    }
+  });
+</script>
+</body>
+</html>
